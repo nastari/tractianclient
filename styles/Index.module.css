@@ -1,0 +1,18 @@
+.container {
+ 
+}
+
+
+.content{ 
+  display: grid;
+  grid-template-columns: 1fr 3.5fr;
+  min-height: 100vh;
+}
+.left{
+  background-color: #fff;
+  border-right: 1px solid rgb(0,0,0,0.11);
+}
+
+.right {
+
+}

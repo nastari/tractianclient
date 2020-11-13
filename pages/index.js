@@ -1,14 +1,20 @@
 import Head from 'next/head'
-import styles from '../styles/Home.module.css'
-import { Input , Button } from 'antd'
+import styles from '../styles/Index.module.css'
+import Sidebar from '../components/Sidebar'
+import Main from '../components/Main'
 
 export default function Home() {
   return (
-    <div>
-      <h1>Teste</h1>
-     
-      <Input width={400} placeholder="oi tudo bom"></Input>
-      <Button style={{ width: 500 }}>ENVIAR</Button>
+    <div className={styles.container}>
+      <div className={styles.content}>
+      <div className={styles.left}>
+      <Sidebar/>
+      </div>
+      <div className={styles.right}>
+      <Main/>
+      </div>
+      </div>
+
     </div>
   )
 }

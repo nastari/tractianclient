@@ -1,0 +1,46 @@
+.container {
+  margin: 50px;
+}
+
+.content {
+  
+}
+
+.top {
+  display: inline-block;
+  border-radius: 8px;
+  border: 1px solid #0400ff50;
+  padding: 0px 20px;
+  height: 50px;
+  text-align: center;
+ 
+}
+
+.icon {
+  height: 18px;
+  margin-right: 10px;
+  margin-bottom: 5px;
+  display: inline;
+}
+
+.title {
+  display: inline;
+  font-size: 30px;
+  font-family: 'Montserrat';
+  letter-spacing: -1.5px;
+}
+
+
+.infosContainer {
+  display: grid;
+  grid-template-columns: 3fr 1fr;
+}
+
+.left {
+  padding: 10px;
+}
+
+.right {
+  padding: 10px 0px 10px 20px;
+  border-left: 1px solid rgba(0, 0, 0, 0.08);
+}

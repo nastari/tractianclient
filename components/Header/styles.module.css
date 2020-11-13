@@ -3,10 +3,29 @@
   display: fixed;
   display: flex;
   justify-content: space-between;
-  padding: 10px 30px;
+  align-items: center;
+  padding: 10px 50px 10px 30px;
 }
 
-.icon {
-  height: 35px;
-  color: #fff;
+.icon_ , .icon {
+  color: white;
+  font-size: 30px;
+  transition: 0.3s;
+  cursor: pointer;
+}
+
+.icon_ {
+  margin-right: 30px;
+}
+.icon_:hover , .icon:hover {
+color: blue;
+}
+
+@media ( max-width: 700px ){
+  .container {
+    padding: 10px 5vw;
+  }
+  .icon_ {
+    margin-right: 30px;
+  }
 }

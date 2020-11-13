@@ -1,0 +1,38 @@
+.container {
+
+}
+
+.section {
+
+}
+
+.ul {
+  font-weight: 900;
+  font-size: 30px;
+  letter-spacing: -1.5px;
+  color: #373737;
+}
+
+.li {
+  font-weight: 600;
+  margin-bottom: 5px;
+  letter-spacing: -0.6px;
+  font-size: 18px;
+  color: #494949;
+  transition: 0.3s;
+  cursor: pointer;
+}
+
+.li:hover {
+  color: blue;
+}
+
+
+
+.circle {
+  display: inline;
+  margin-left: 10px;
+  background-color:#DFDEFF;
+  padding: 5px 10px;
+  border-radius: 90px;
+}
