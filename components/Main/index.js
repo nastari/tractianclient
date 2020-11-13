@@ -4,14 +4,19 @@ import styles from './styles.module.css';
 import { FundOutlined , PlusCircleOutlined , CarryOutOutlined , UserOutlined } from '@ant-design/icons';
 import MainSidebar from '../MainSidebar'
 import MainInfo from '../MainInfo'
+import Assets from '../Assets'
 
 function Main({ escope, setEscope , showDrawer }) {
-  const [ current, SetCurrent ] = useState("1");
+ 
   const fadeInRef = useRef();
 
+  const [ option , setOption ] = useState("0")
+
   const handleClick = (e) => {  
-      SetCurrent(e.key)
+    console.log(e.key);
+      setOption(e.key)
   }
+
   useEffect(() => {
   fadeInRef.current.style.opacity = 1;
   },[])
@@ -26,29 +31,40 @@ function Main({ escope, setEscope , showDrawer }) {
     </div>
 
   
-    <Menu onClick={(e) => handleClick(e)} selectedKeys={[current]} mode="horizontal">
-                <Menu.Item key="1" icon={<FundOutlined />}>
+    <Menu onClick={(e) => handleClick(e)} selectedKeys={[option]} mode="horizontal">
+                <Menu.Item key="0" icon={<FundOutlined />}>
                 Painel
                 </Menu.Item>
-                <Menu.Item key="2" icon={<CarryOutOutlined />}>
+                <Menu.Item key="1"  icon={<CarryOutOutlined />}>
                 Ativos
                 </Menu.Item>
-                <Menu.Item key="3" icon={<PlusCircleOutlined />}>
+                <Menu.Item key="2"   icon={<PlusCircleOutlined />}>
                 Criar usuário
                 </Menu.Item>
-                <Menu.Item key="4" icon={<UserOutlined />}>
+                <Menu.Item key="3" icon={<UserOutlined />}>
                 Colaboradores
                 </Menu.Item>
               </Menu>
 
 
           <div className={styles.infosContainer}>
+             { option === "0" && <>
               <div className={styles.left}>
-                <MainInfo/>
+                  <MainInfo/>
               </div>
               <div className={styles.right}>
                 <MainSidebar/>
               </div>
+              </> } 
+
+              { option === "1" && <>
+              <div className={styles.left}>
+                  <Assets/>
+              </div>
+              <div className={styles.right}>
+                <MainSidebar/>
+              </div>
+              </> } 
           </div>
         </div>
     </div>
