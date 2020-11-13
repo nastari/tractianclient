@@ -5,11 +5,12 @@ import { FundOutlined , PlusCircleOutlined , CarryOutOutlined , UserOutlined } f
 import MainSidebar from '../MainSidebar'
 import MainInfo from '../MainInfo'
 
-function Main() {
+function Main({ escope, setEscope }) {
   const [ current, SetCurrent ] = useState("1")
   const handleClick = (e) => {  
       SetCurrent(e.key)
   }
+  
 
   return <div className={styles.container}>
     <div className={styles.content}>
