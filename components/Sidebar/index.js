@@ -14,22 +14,22 @@ function Sidebar() {
         defaultSelectedKeys={['1']}
         mode="inline"
       >
-        <Menu.Item key="1">
+        <Menu.Item style={{ fontWeight: 500 }} key="1">
             <img src="/polygon.svg" className={styles.menuIcon}/>geral
         </Menu.Item>
-        <Menu.Item >
+        <Menu.Item style={{ fontWeight: 500 }} >
             <img src="/polygon.svg" className={styles.menuIcon}/>unidade 1
         </Menu.Item>
-        <Menu.Item >
+        <Menu.Item style={{ fontWeight: 500 }} >
             <img src="/polygon.svg" className={styles.menuIcon}/>unidade 2
         </Menu.Item>
-        <Menu.Item >
+        <Menu.Item style={{ fontWeight: 500 }} >
             <img src="/polygon.svg" className={styles.menuIcon}/>unidade 2
         </Menu.Item>
-        <Menu.Item >
+        <Menu.Item style={{ fontWeight: 500 }} >
             <img src="/+.svg" className={styles.menuIcon_}/>criar unidade
         </Menu.Item>
-        <Menu.Item >
+        <Menu.Item style={{ fontWeight: 500 }} >
             <img src="/+.svg" className={styles.menuIcon_}/>criar empresa
         </Menu.Item>
       </Menu>
