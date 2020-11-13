@@ -1,9 +1,15 @@
 .container {
   margin: 50px;
+
 }
 
 .content {
-  
+  opacity: 0.0;
+  transition: opacity 1s; 
+}
+
+.content:hover {
+  opacity: 1;
 }
 
 .top {

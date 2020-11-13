@@ -1,4 +1,4 @@
-import React , { useState}  from 'react';
+import React , { useState, useRef ,useEffect }  from 'react';
 import { Menu } from 'antd';
 import styles from './styles.module.css';
 import { FundOutlined , PlusCircleOutlined , CarryOutOutlined , UserOutlined } from '@ant-design/icons';
@@ -6,14 +6,18 @@ import MainSidebar from '../MainSidebar'
 import MainInfo from '../MainInfo'
 
 function Main({ escope, setEscope }) {
-  const [ current, SetCurrent ] = useState("1")
+  const [ current, SetCurrent ] = useState("1");
+  const fadeInRef = useRef();
+
   const handleClick = (e) => {  
       SetCurrent(e.key)
   }
+  useEffect(() => {
+  fadeInRef.current.style.opacity = 1;
+  },[])
   
-
   return <div className={styles.container}>
-    <div className={styles.content}>
+    <div ref={fadeInRef} className={styles.content}>
 
 
     <div className={styles.top}>
