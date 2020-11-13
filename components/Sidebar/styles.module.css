@@ -21,6 +21,12 @@
   margin-left: 30px;
 }
 
+.menuitem {
+  font-weight: 500;
+  text-transform: lowercase;
+
+}
+
 .menuIcon , .menuIcon_ {
   margin-right: 10px;
   margin-left: 20px;

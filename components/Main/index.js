@@ -5,17 +5,22 @@ import { FundOutlined , PlusCircleOutlined , CarryOutOutlined , UserOutlined } f
 import MainSidebar from '../MainSidebar'
 import MainInfo from '../MainInfo'
 import Assets from '../Assets'
+import NewUser from '../NewUser'
+import Collaborators from '../Collaborators'
 
-function Main({ escope, setEscope , showDrawer }) {
+function Main({ escope, showDrawer }) {
  
   const fadeInRef = useRef();
 
   const [ option , setOption ] = useState("0")
 
   const handleClick = (e) => {  
-    console.log(e.key);
       setOption(e.key)
   }
+
+  useEffect(() => {
+      setOption("0")
+  },[escope])
 
   useEffect(() => {
   fadeInRef.current.style.opacity = 1;
@@ -30,8 +35,8 @@ function Main({ escope, setEscope , showDrawer }) {
         <h2 className={styles.title}>geral</h2>
     </div>
 
-  
-    <Menu onClick={(e) => handleClick(e)} selectedKeys={[option]} mode="horizontal">
+    {escope === 0 ? 
+     <Menu onClick={(e) => handleClick(e)} selectedKeys={[option]} mode="horizontal">
                 <Menu.Item key="0" icon={<FundOutlined />}>
                 Painel
                 </Menu.Item>
@@ -45,6 +50,21 @@ function Main({ escope, setEscope , showDrawer }) {
                 Colaboradores
                 </Menu.Item>
               </Menu>
+              : 
+              <Menu onClick={(e) => handleClick(e)} selectedKeys={[option]} mode="horizontal">
+              <Menu.Item key="0" icon={<FundOutlined />}>
+              Painel
+              </Menu.Item>
+              <Menu.Item key="1"  icon={<CarryOutOutlined />}>
+              Ativos
+              </Menu.Item>
+              <Menu.Item key="2" icon={<PlusCircleOutlined />}>
+              Criar ativo
+              </Menu.Item>
+              <Menu.Item key="3" icon={<UserOutlined />}>
+              Notificações
+              </Menu.Item>
+            </Menu> }
 
 
           <div className={styles.infosContainer}>
@@ -65,6 +85,9 @@ function Main({ escope, setEscope , showDrawer }) {
                 <MainSidebar/>
               </div>
               </> } 
+
+              { option === "2" && <NewUser/>}
+              { option === "3" && <Collaborators/>}
           </div>
         </div>
     </div>

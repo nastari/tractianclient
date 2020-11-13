@@ -8,9 +8,6 @@
   transition: opacity 1s; 
 }
 
-.content:hover {
-  opacity: 1;
-}
 
 .top {
   display: inline-block;

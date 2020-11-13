@@ -2,8 +2,8 @@ import React from 'react';
 
 // import { Container } from './styles';
 
-function Unidade() {
+function Asset() {
   return <div />;
 }
 
-export default Unidade;
+export default Asset;

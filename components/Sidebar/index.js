@@ -3,7 +3,7 @@ import { Menu , Drawer, Button } from 'antd';
 import styles from './styles.module.css';
 
 
-function Sidebar({visibleMobileSidebar, onClose }) {
+function Sidebar({ setEscope, visibleMobileSidebar, onClose }) {
 
 
 
@@ -18,30 +18,27 @@ function Sidebar({visibleMobileSidebar, onClose }) {
         defaultSelectedKeys={['1']}
         mode="inline"
       >
-        <Menu.Item style={{ fontWeight: 500 }} key="1">
+        <Menu.Item onClick={() => setEscope(0)} className={styles.menuitem} key="1">
             <img src="/polygon.svg" className={styles.menuIcon}/>geral
         </Menu.Item>
-        <Menu.Item style={{ fontWeight: 500 }} >
-            <img src="/polygon.svg" className={styles.menuIcon}/>unidade 1
+        <Menu.Item onClick={() => setEscope(1)} className={styles.menuitem} >
+            <img src="/polygon.svg" className={styles.menuIcon}/>unidade Pavuna
         </Menu.Item>
-        <Menu.Item style={{ fontWeight: 500 }} >
-            <img src="/polygon.svg" className={styles.menuIcon}/>unidade 2
+        <Menu.Item onClick={() => setEscope(2)} className={styles.menuitem} >
+            <img src="/polygon.svg" className={styles.menuIcon}/>unidade Baixada
         </Menu.Item>
-        <Menu.Item style={{ fontWeight: 500 }} >
-            <img src="/polygon.svg" className={styles.menuIcon}/>unidade 2
+        <Menu.Item onClick={() => setEscope(3)} className={styles.menuitem} >
+            <img src="/polygon.svg" className={styles.menuIcon}/>unidade Flamengo
         </Menu.Item>
-        <Menu.Item style={{ fontWeight: 500 }} >
+        <Menu.Item className={styles.menuitem} >
             <img src="/+.svg" className={styles.menuIcon_}/>criar unidade
         </Menu.Item>
-        <Menu.Item style={{ fontWeight: 500 }} >
+        <Menu.Item className={styles.menuitem} >
             <img src="/+.svg" className={styles.menuIcon_}/>criar empresa
         </Menu.Item>
       </Menu>
   </div>
   <div className={styles.mobile}>
-      {/* <Button type="primary" onClick={showDrawer}>
-        Open
-      </Button> */}
       <Drawer
         title="Peugeot SA"
         placement="left"
