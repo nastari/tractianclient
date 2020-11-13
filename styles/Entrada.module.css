@@ -1,0 +1,41 @@
+.container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background:  blue;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 30vw;
+}
+
+.logo {
+  margin-bottom: 50px;
+  height: fit-content;
+  width: fit-content;
+}
+
+.input {
+  padding: 10px 20px;
+  margin-bottom: 10px;
+  font-weight: 500;
+}
+
+
+.button {
+  background-color: #101010;
+  height: 50px;
+  width: 100%;
+  font-weight: 600;
+  color: #fff;
+}
+
+.button:hover {
+  background-color: #010101;
+  color: #fff;
+}

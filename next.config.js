@@ -22,4 +22,13 @@ module.exports = withCSS({
       },
     })
   ),
+  async redirects() {
+    return [
+      {
+        source: '/',
+        destination: '/entrada',
+        permanent: false,
+      },
+    ]
+  },
 });
