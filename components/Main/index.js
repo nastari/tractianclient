@@ -5,7 +5,7 @@ import { FundOutlined , PlusCircleOutlined , CarryOutOutlined , UserOutlined } f
 import MainSidebar from '../MainSidebar'
 import MainInfo from '../MainInfo'
 
-function Main({ escope, setEscope }) {
+function Main({ escope, setEscope , showDrawer }) {
   const [ current, SetCurrent ] = useState("1");
   const fadeInRef = useRef();
 
@@ -20,7 +20,7 @@ function Main({ escope, setEscope }) {
     <div ref={fadeInRef} className={styles.content}>
 
 
-    <div className={styles.top}>
+    <div onClick={() => showDrawer()} className={styles.top}>
         <img src="/polygon.svg" className={styles.icon} alt="Poligono"/>
         <h2 className={styles.title}>geral</h2>
     </div>

@@ -1,3 +1,12 @@
+.container {
+
+}
+
+.mobile {
+  display: none;
+  background-color: red;
+}
+
 .headerSideBar{
   position: relative;
   height: 50px;
@@ -16,9 +25,35 @@
   margin-right: 10px;
   margin-left: 20px;
   height: 10px;
+  display: inline;
 }
 
 .menuIcon_ {
   height: 14px;
+  display: inline;
 }
 
+@media ( max-width: 700px ){
+.container {
+  display: none;
+}
+
+.mobile {
+  display: inline;
+}
+
+.mobileLinha {
+  border-bottom: 1px solid #00000027;
+  margin-bottom: 15px;
+}
+
+.mobileText {
+  display: inline;
+  font-weight: 500;
+  font-size: 18px;
+  letter-spacing: -0.5px;
+  text-transform: lowercase;
+}
+
+
+}

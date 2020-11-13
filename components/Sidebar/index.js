@@ -1,10 +1,14 @@
-import React from 'react';
-import { Menu } from 'antd';
+import React, { useState } from 'react';
+import { Menu , Drawer, Button } from 'antd';
 import styles from './styles.module.css';
 
 
-function Sidebar() {
-  return <div>
+function Sidebar({visibleMobileSidebar, onClose }) {
+
+
+
+  return <>
+    <div className={styles.container}>
     <div className={styles.headerSideBar}>
       <p className={styles.company}>
         Peugeot SA
@@ -33,7 +37,34 @@ function Sidebar() {
             <img src="/+.svg" className={styles.menuIcon_}/>criar empresa
         </Menu.Item>
       </Menu>
-  </div>;
+  </div>
+  <div className={styles.mobile}>
+      {/* <Button type="primary" onClick={showDrawer}>
+        Open
+      </Button> */}
+      <Drawer
+        title="Peugeot SA"
+        placement="left"
+        closable={false}
+        onClose={onClose}
+        visible={visibleMobileSidebar}
+      >
+
+        <div className={styles.mobileLinha}>
+        <img src="/polygon.svg" className={styles.menuIcon}/><p className={styles.mobileText}>geral</p>
+
+        </div>
+        <div className={styles.mobileLinha}>
+        <img src="/polygon.svg" className={styles.menuIcon}/><p className={styles.mobileText}>unidade Baixada</p>
+
+        </div>
+        <div className={styles.mobileLinha}>
+        <img src="/polygon.svg" className={styles.menuIcon}/><p className={styles.mobileText}>unidade Flamengo</p>
+
+        </div>
+      </Drawer>
+    </div>
+  </>;
 }
 
 export default Sidebar;

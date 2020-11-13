@@ -38,3 +38,11 @@
   padding: 3px 6px;
   border-radius: 90px;
 }
+
+
+@media ( max-width: 700px ){
+  .container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+}

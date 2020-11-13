@@ -50,3 +50,17 @@
   padding: 10px 0px 10px 20px;
   border-left: 1px solid rgba(0, 0, 0, 0.05);
 }
+
+
+@media ( max-width: 700px ){
+  .container {
+    margin: 10px;
+  }
+
+  .infosContainer {
+    display: flex;
+    flex-direction: column;
+    
+  }
+  
+}

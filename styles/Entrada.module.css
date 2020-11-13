@@ -38,3 +38,23 @@
   background-color: #010101;
   color: #fff;
 }
+
+@media ( max-width: 1025px ){
+  .content {
+    width: 60vw;
+  }
+
+  .button {
+    width: 60vw;
+  }
+}
+
+@media ( max-width: 700px ){
+    .content {
+      width: 90vw;
+    }
+
+    .button {
+      width: 90vw;
+    }
+}
