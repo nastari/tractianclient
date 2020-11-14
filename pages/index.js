@@ -1,10 +1,11 @@
-import { useState, useEffect, useRef } from 'react'
+// import { useState, useEffect, useRef } from 'react'
 import Header from '../components/Header'
 import styles from '../styles/Index.module.css'
 import Sidebar from '../components/Sidebar'
 import Main from '../components/Main'
+import ModalConcern from '../components/ModalConcerny'
 
-import { useCounter } from '../context/Escope'
+// import { useCounter } from '../context/Escope'
 
 export default function Home() {
 
@@ -22,6 +23,7 @@ export default function Home() {
             <Main/>
         </div>
       </div>
+      <ModalConcern/>
   </>
   )
 }

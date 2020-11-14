@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
 import { Menu , Drawer, Button } from 'antd';
 import styles from './styles.module.css';
-import { useEscope , useMobile } from '../../context/Escope'
+import { useEscope , useMobile, useModal } from '../../context/Escope'
 
 function Sidebar() {
 
   const { setEscope  } = useEscope()
   const { visibleMobileSidebar , setVisibleMobileSidebar } = useMobile()
+  const { setModal } = useModal()
 
   return <>
     <div className={styles.container}>
@@ -31,10 +32,10 @@ function Sidebar() {
         <Menu.Item onClick={() => setEscope(3)} className={styles.menuitem} >
             <img src="/polygon.svg" className={styles.menuIcon}/>unidade Flamengo
         </Menu.Item>
-        <Menu.Item className={styles.menuitem} >
+        <Menu.Item className={styles.menuitem} onClick={() => setModal("create_unity")}>
             <img src="/+.svg" className={styles.menuIcon_}/>criar unidade
         </Menu.Item>
-        <Menu.Item className={styles.menuitem} >
+        <Menu.Item className={styles.menuitem} onClick={() => setModal("create_company")}>
             <img src="/+.svg" className={styles.menuIcon_}/>criar empresa
         </Menu.Item>
       </Menu>
@@ -61,12 +62,12 @@ function Sidebar() {
 
         </div>
 
-        <div className={styles.mobileLinha}>
+        <div className={styles.mobileLinha} onClick={() => setModal("create_unity")}>
         <img src="/+.svg" className={styles.menuIcon_}/><p className={styles.mobileText}>criar unidade</p>
 
         </div>
 
-        <div className={styles.mobileLinha}>
+        <div className={styles.mobileLinha} onClick={() => setModal("create_company")}>
         <img src="/+.svg" className={styles.menuIcon_}/><p className={styles.mobileText}>criar empresa</p>
 
         </div>

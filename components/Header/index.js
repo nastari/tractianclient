@@ -5,7 +5,11 @@ import {
   HomeOutlined,
   LogoutOutlined
 } from '@ant-design/icons';
+
+import { useModal } from '../../context/Escope'
+
 function Header() {
+  const { setModal } = useModal()
   return <div className={styles.container}>
             <Link href="/">
             <a>
@@ -13,9 +17,9 @@ function Header() {
               </a></Link>
            
             <div>
-              <HomeOutlined className={styles.icon_}/>
+              <HomeOutlined className={styles.icon_} onClick={() => setModal("update_company")}/>
               <Link href="/entrada">
-              <a >
+              <a>
               <LogoutOutlined className={styles.icon}/>
               </a></Link>
             </div>
