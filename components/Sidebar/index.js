@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
 import { Menu , Drawer, Button } from 'antd';
 import styles from './styles.module.css';
+import { useEscope , useMobile } from '../../context/Escope'
 
+function Sidebar() {
 
-function Sidebar({ setEscope, visibleMobileSidebar, onClose }) {
-
-
+  const { setEscope  } = useEscope()
+  const { visibleMobileSidebar , setVisibleMobileSidebar } = useMobile()
 
   return <>
     <div className={styles.container}>
@@ -43,7 +44,7 @@ function Sidebar({ setEscope, visibleMobileSidebar, onClose }) {
         title="Peugeot SA"
         placement="left"
         closable={false}
-        onClose={onClose}
+        onClose={() => setVisibleMobileSidebar(false)}
         visible={visibleMobileSidebar}
       >
 

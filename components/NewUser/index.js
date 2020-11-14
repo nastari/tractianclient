@@ -1,10 +1,9 @@
 import React from 'react';
 import { Input , Button} from 'antd'
-import { UserOutlined } from '@ant-design/icons';
-
 import styles from './styles.module.css';
 
 function NewUser() {
+
   return <div className={styles.container}> 
     <div className={styles.content}>
     

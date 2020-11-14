@@ -3,25 +3,23 @@ import Header from '../components/Header'
 import styles from '../styles/Index.module.css'
 import Sidebar from '../components/Sidebar'
 import Main from '../components/Main'
+
+import { useCounter } from '../context/Escope'
+
 export default function Home() {
-  const [ escope , setEscope ] = useState(0);
 
-  //
-  const [visibleMobileSidebar, setVisibleMobileSidebar] = useState(false);
-  const showDrawer = () => setVisibleMobileSidebar(true);
-  const onClose = () => setVisibleMobileSidebar(false);
-  //
-
+  // const { count, setCount } = useCounter();
   return (
     <>
      <Header/>
-
+     {/* {count} */}
+     {/* <button onClick={() => setCount( c => c + 1 )}>AUMENTAR</button> */}
       <div className={styles.content}>
         <div className={styles.left}>
-            <Sidebar setEscope={setEscope} visibleMobileSidebar={visibleMobileSidebar} onClose={onClose}/>
+            <Sidebar/>
         </div>
         <div className={styles.right}>
-            <Main escope={escope} showDrawer={showDrawer}/>
+            <Main/>
         </div>
       </div>
   </>

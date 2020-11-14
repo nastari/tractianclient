@@ -7,11 +7,14 @@ import MainInfo from '../MainInfo'
 import Assets from '../Assets'
 import NewUser from '../NewUser'
 import Collaborators from '../Collaborators'
+import { useEscope , useMobile } from '../../context/Escope'
 
-function Main({ escope, showDrawer }) {
+function Main() {
  
   const fadeInRef = useRef();
 
+  const { escope } = useEscope()
+  const { setVisibleMobileSidebar } = useMobile()
   const [ option , setOption ] = useState("0")
 
   const handleClick = (e) => {  
@@ -30,7 +33,7 @@ function Main({ escope, showDrawer }) {
     <div ref={fadeInRef} className={styles.content}>
 
 
-    <div onClick={() => showDrawer()} className={styles.top}>
+    <div onClick={() => setVisibleMobileSidebar(true)} className={styles.top}>
         <img src="/polygon.svg" className={styles.icon} alt="Poligono"/>
         <h2 className={styles.title}>geral</h2>
         <CaretDownOutlined className={styles.arrow}/>
