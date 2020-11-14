@@ -9,18 +9,23 @@ function Sidebar() {
   const { visibleMobileSidebar , setVisibleMobileSidebar } = useMobile()
   const { setModal } = useModal()
   const { company } = useCompany()
-  const [ units, setUnits ] = useState([])
+  const [ units, setUnits ] = useState([2])
+
   useEffect(() => {
-    getUnits(company);
+    if(company){
+      getUnits(company);
+    }
   },[company])
 
   async function getUnits(id){
-
+      console.log(id);
       const res = await fetch(`http://localhost:30233/units?company_id=${id}`)
-      const units_ = await res.json()
-
-     setUnits(units_)
+      const array = await res.json()
+      console.log(array);
+      setUnits(array)
   }
+
+
 
   return <>
     <div className={styles.container}>
