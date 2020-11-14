@@ -61,12 +61,12 @@ function Sidebar({ setEscope, visibleMobileSidebar, onClose }) {
         </div>
 
         <div className={styles.mobileLinha}>
-        <img src="/+.svg" className={styles.menuIcon}/><p className={styles.mobileText}>criar unidade</p>
+        <img src="/+.svg" className={styles.menuIcon_}/><p className={styles.mobileText}>criar unidade</p>
 
         </div>
 
         <div className={styles.mobileLinha}>
-        <img src="/+.svg" className={styles.menuIcon}/><p className={styles.mobileText}>criar empresa</p>
+        <img src="/+.svg" className={styles.menuIcon_}/><p className={styles.mobileText}>criar empresa</p>
 
         </div>
       </Drawer>
