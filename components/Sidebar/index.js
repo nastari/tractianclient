@@ -52,11 +52,21 @@ function Sidebar({ setEscope, visibleMobileSidebar, onClose }) {
 
         </div>
         <div className={styles.mobileLinha}>
-        <img src="/polygon.svg" className={styles.menuIcon}/><p className={styles.mobileText}>unidade Baixada</p>
+        <img src="/polygon.svg" className={styles.menuIcon}/><p className={styles.mobileText}>unidade baixada</p>
 
         </div>
         <div className={styles.mobileLinha}>
-        <img src="/polygon.svg" className={styles.menuIcon}/><p className={styles.mobileText}>unidade Flamengo</p>
+        <img src="/polygon.svg" className={styles.menuIcon}/><p className={styles.mobileText}>unidade flamengo</p>
+
+        </div>
+
+        <div className={styles.mobileLinha}>
+        <img src="/+.svg" className={styles.menuIcon}/><p className={styles.mobileText}>criar unidade</p>
+
+        </div>
+
+        <div className={styles.mobileLinha}>
+        <img src="/+.svg" className={styles.menuIcon}/><p className={styles.mobileText}>criar empresa</p>
 
         </div>
       </Drawer>
