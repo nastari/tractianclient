@@ -1,7 +1,7 @@
 import React , { useState, useRef ,useEffect }  from 'react';
 import { Menu } from 'antd';
 import styles from './styles.module.css';
-import { FundOutlined , PlusCircleOutlined , CarryOutOutlined , UserOutlined , CaretDownOutlined } from '@ant-design/icons';
+import { FundOutlined , PlusCircleOutlined , CarryOutOutlined , UserOutlined , CaretDownOutlined , ScheduleOutlined } from '@ant-design/icons';
 import MainSidebar from '../MainSidebar'
 import MainInfo from '../MainInfo'
 import Assets from '../Assets'
@@ -62,7 +62,7 @@ function Main({ escope, showDrawer }) {
               <Menu.Item key="2" icon={<PlusCircleOutlined />}>
               Criar ativo
               </Menu.Item>
-              <Menu.Item key="3" icon={<UserOutlined />}>
+              <Menu.Item key="3" icon={<ScheduleOutlined />}>
               Notificações
               </Menu.Item>
             </Menu> }
