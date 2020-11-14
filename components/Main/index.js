@@ -1,7 +1,7 @@
 import React , { useState, useRef ,useEffect }  from 'react';
 import { Menu } from 'antd';
 import styles from './styles.module.css';
-import { FundOutlined , PlusCircleOutlined , CarryOutOutlined , UserOutlined } from '@ant-design/icons';
+import { FundOutlined , PlusCircleOutlined , CarryOutOutlined , UserOutlined , CaretDownOutlined } from '@ant-design/icons';
 import MainSidebar from '../MainSidebar'
 import MainInfo from '../MainInfo'
 import Assets from '../Assets'
@@ -33,6 +33,7 @@ function Main({ escope, showDrawer }) {
     <div onClick={() => showDrawer()} className={styles.top}>
         <img src="/polygon.svg" className={styles.icon} alt="Poligono"/>
         <h2 className={styles.title}>geral</h2>
+        <CaretDownOutlined className={styles.arrow}/>
     </div>
 
     {escope === 0 ? 
