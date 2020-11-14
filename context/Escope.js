@@ -8,6 +8,7 @@ export default function CountProvider({ children }){
   const [ count, setCount ] = useState(0);
   const [ escope, setEscope ] = useState(0);
   const [ modal, setModal ] = useState(false);
+  const [ company, setCompany ] = useState(null);
   const [ visibleMobileSidebar , setVisibleMobileSidebar ] = useState(false);
 
 
@@ -22,6 +23,8 @@ export default function CountProvider({ children }){
                                      setEscope,
                                      modal,
                                      setModal,
+                                     company,
+                                     setCompany,
                                      visibleMobileSidebar, 
                                      setVisibleMobileSidebar }}>
       {children}
@@ -53,4 +56,10 @@ export function useModal(){
   const context = useContext(CounterContext);
   const { modal, setModal } = context;
   return { modal, setModal }
+}
+
+export function useCompany(){
+  const context = useContext(CounterContext);
+  const { company, setCompany } = context;
+  return { company, setCompany }
 }
