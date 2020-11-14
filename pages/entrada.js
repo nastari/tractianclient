@@ -7,7 +7,7 @@ function Entrada() {
   const router = useRouter();
   return <div className={styles.container}>
     <div className={styles.content}>
-      <img src="/tractianblack.webp" className={styles.logo} alt=""/>
+      <img src="/tractianblack.jpg" className={styles.logo} alt=""/>
     <Input className={styles.input} placeholder="Email do Colaborador"></Input>
     <Input className={styles.input} placeholder="Senha"></Input>
     <Button onClick={() => router.push('/')} className={styles.button}>ENTRAR</Button>
