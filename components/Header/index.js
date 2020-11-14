@@ -9,7 +9,7 @@ function Header() {
   return <div className={styles.container}>
             <Link href="/">
             <a>
-               <img src="/tractian.webp" alt="Tractian Logo"/>
+               <img src="/tractian.png" alt="Tractian Logo"/>
               </a></Link>
            
             <div>
