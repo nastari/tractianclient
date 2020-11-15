@@ -19,10 +19,17 @@ function Entrada() {
   })
 
     if(!response.ok){
+
       alert('Companhia não encontrada')
+
     } else {
 
-      localStorage.setItem('company_id', auth )
+      const data = await response.json()
+
+      console.log(data);
+      console.log('entrada data receive');
+
+      localStorage.setItem('company', JSON.stringify(data))
 
       router.push({
       pathname: '/',

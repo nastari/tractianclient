@@ -1,25 +1,17 @@
-import { createContext, useState , useContext , useEffect } from 'react'
+import { createContext, useState , useContext } from 'react'
 
 const CounterContext = createContext(null);
 
 
 export default function CountProvider({ children }){
 
-  const [ count, setCount ] = useState(0);
   const [ escope, setEscope ] = useState(0);
   const [ modal, setModal ] = useState(false);
   const [ company, setCompany ] = useState(null);
   const [ visibleMobileSidebar , setVisibleMobileSidebar ] = useState(false);
 
-
-  useEffect(() => {
-    console.log(modal);
-  },[modal])
-
   return (
-    <CounterContext.Provider value={{count,
-                                     setCount, 
-                                     escope,
+    <CounterContext.Provider value={{escope,
                                      setEscope,
                                      modal,
                                      setModal,
@@ -31,13 +23,6 @@ export default function CountProvider({ children }){
       </CounterContext.Provider>
   )
 }
-
-export function useCounter(){
-  const context = useContext(CounterContext);
-  const { count , setCount } = context;
-  return { count, setCount }
-}
-
 
 export function useEscope(){
   const context = useContext(CounterContext);

@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Menu , Drawer, Button } from 'antd';
+import { Menu , Drawer } from 'antd';
 import styles from './styles.module.css';
 import { useEscope , useMobile, useModal , useCompany } from '../../context/Escope'
 
@@ -7,22 +7,23 @@ function Sidebar() {
 
   const { setEscope  } = useEscope()
   const { visibleMobileSidebar , setVisibleMobileSidebar } = useMobile()
-  const { setModal } = useModal()
-  const { company } = useCompany()
-  const [ units, setUnits ] = useState([2])
+  const { setModal } = useModal();
+  const { company } = useCompany();
+  const [ units, setUnits ] = useState([])
 
-  useEffect(() => {
-    if(company){
-      getUnits(company);
+  useEffect( async () => {
+    if(company) 
+    {
+      console.log('embaixo a data receive do index');
+      console.log(company);
+      getUnits(company._id)
     }
-  },[company])
+    },[company])
 
   async function getUnits(id){
-      console.log(id);
       const res = await fetch(`http://localhost:30233/units?company_id=${id}`)
-      const array = await res.json()
-      console.log(array);
-      setUnits(array)
+      const units_ = await res.json()
+      setUnits(units_)
   }
 
 
@@ -31,7 +32,7 @@ function Sidebar() {
     <div className={styles.container}>
     <div className={styles.headerSideBar}>
       <p className={styles.company}>
-        Peugeot SA
+        {company ? company.name : null }
       </p>
     </div>
     <Menu
@@ -42,7 +43,7 @@ function Sidebar() {
             <img src="/polygon.svg" className={styles.menuIcon}/>geral
         </Menu.Item>
         { units && units.map( unit => (
-                  <Menu.Item onClick={() => setEscope(1)} className={styles.menuitem} >
+                  <Menu.Item onClick={() => setEscope( n => n + 1 )} className={styles.menuitem} >
             <img src="/polygon.svg" className={styles.menuIcon}/>{unit.name}
         </Menu.Item>
         ))}
@@ -71,7 +72,7 @@ function Sidebar() {
             <img src="/polygon.svg" className={styles.menuIcon}/>geral
         </Menu.Item>
         {units && units.map( unit => (
-                  <Menu.Item onClick={() => setEscope(1)} className={styles.menuitem} >
+                  <Menu.Item onClick={() => setEscope( n => n + 1 )} className={styles.menuitem} >
             <img src="/polygon.svg" className={styles.menuIcon}/>{unit.name}
         </Menu.Item>
         ))}
