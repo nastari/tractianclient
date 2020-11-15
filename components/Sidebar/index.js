@@ -18,8 +18,15 @@ function Sidebar() {
     },[company])
 
   async function getUnits(id){
-      const res = await fetch(`http://localhost:30233/units?company_id=${id}`)
-      const units_ = await res.json()
+      // const res = await fetch(`http://localhost:30233/units?company_id=${id}`)
+      // const units_ = await res.json()
+
+
+      const units_ = [
+        { name: 'unidade baixada' , id: '1242dsa213'},
+        { name: 'unidade flamengo' , id:  '1213'}
+      ]
+
       setUnits(units_)
   }
 
