@@ -5,16 +5,18 @@ const CounterContext = createContext(null);
 
 export default function CountProvider({ children }){
 
-  const [ escope, setEscope ] = useState(0);
+  const [ escope, setEscope ] = useState(-1);
   const [ modal, setModal ] = useState(false);
   const [ company, setCompany ] = useState(null);
   const [ visibleMobileSidebar , setVisibleMobileSidebar ] = useState(false);
-
+  const [ units, setUnits ] = useState(false)
   return (
     <CounterContext.Provider value={{escope,
                                      setEscope,
                                      modal,
                                      setModal,
+                                     units,
+                                     setUnits,
                                      company,
                                      setCompany,
                                      visibleMobileSidebar, 
@@ -42,6 +44,13 @@ export function useModal(){
   const { modal, setModal } = context;
   return { modal, setModal }
 }
+
+export function useUnits(){
+  const context = useContext(CounterContext);
+  const { units, setUnits  } = context;
+  return { units, setUnits  }
+}
+
 
 export function useCompany(){
   const context = useContext(CounterContext);

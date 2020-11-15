@@ -7,7 +7,7 @@ import MainInfo from '../MainInfo'
 import Assets from '../Assets'
 import NewUser from '../NewUser'
 import Collaborators from '../Collaborators'
-import { useEscope , useMobile } from '../../context/Escope'
+import { useEscope , useMobile, useUnits } from '../../context/Escope'
 
 function Main() {
  
@@ -16,7 +16,7 @@ function Main() {
   const { escope } = useEscope()
   const { setVisibleMobileSidebar } = useMobile()
   const [ option , setOption ] = useState("0")
-
+  const { units } = useUnits()
   const handleClick = (e) => {  
       setOption(e.key)
   }
@@ -35,7 +35,7 @@ function Main() {
 
     <div onClick={() => setVisibleMobileSidebar(true)} className={styles.top}>
         <img src="/polygon.svg" className={styles.icon} alt="Poligono"/>
-        <h2 className={styles.title}>geral</h2>
+        <h2 className={styles.title}>{ escope === -1 ? 'geral' : units[escope].name }</h2>
         <CaretDownOutlined className={styles.arrow}/>
     </div>
 

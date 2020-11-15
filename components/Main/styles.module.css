@@ -34,6 +34,7 @@
   display: inline;
   font-size: 30px;
   font-family: 'Montserrat';
+  text-transform: lowercase;
   letter-spacing: -1.5px;
 }
 

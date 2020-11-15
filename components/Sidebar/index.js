@@ -1,21 +1,18 @@
 import { useEffect, useState } from 'react';
 import { Menu , Drawer } from 'antd';
 import styles from './styles.module.css';
-import { useEscope , useMobile, useModal , useCompany } from '../../context/Escope'
+import { useEscope , useMobile, useModal , useCompany, useUnits } from '../../context/Escope'
 
 function Sidebar() {
 
-  const { setEscope  } = useEscope()
+  const { setEscope } = useEscope()
   const { visibleMobileSidebar , setVisibleMobileSidebar } = useMobile()
   const { setModal } = useModal();
   const { company } = useCompany();
-  const [ units, setUnits ] = useState([])
+  const { units, setUnits } = useUnits()
 
   useEffect( async () => {
-    if(company) 
-    {
-      console.log('embaixo a data receive do index');
-      console.log(company);
+    if(company) {
       getUnits(company._id)
     }
     },[company])
@@ -32,18 +29,18 @@ function Sidebar() {
     <div className={styles.container}>
     <div className={styles.headerSideBar}>
       <p className={styles.company}>
-        {company ? company.name : null }
+        {company && company.name}
       </p>
     </div>
     <Menu
-        defaultSelectedKeys={['1']}
+        defaultSelectedKeys={['-1']}
         mode="inline"
       >
-        <Menu.Item onClick={() => setEscope(0)} className={styles.menuitem} key="1">
+        <Menu.Item onClick={() => setEscope(-1)} className={styles.menuitem} key="-1">
             <img src="/polygon.svg" className={styles.menuIcon}/>geral
         </Menu.Item>
-        { units && units.map( unit => (
-                  <Menu.Item onClick={() => setEscope( n => n + 1 )} className={styles.menuitem} >
+        { units && units.map( ( unit, key ) => (
+                  <Menu.Item onClick={() => setEscope( key )} className={styles.menuitem} >
             <img src="/polygon.svg" className={styles.menuIcon}/>{unit.name}
         </Menu.Item>
         ))}
@@ -65,14 +62,14 @@ function Sidebar() {
       >
 
           <Menu
-          defaultSelectedKeys={['1']}
+          defaultSelectedKeys={['-1']}
           mode="inline"
           >
-        <Menu.Item onClick={() => setEscope(0)} className={styles.menuitem} key="1">
+        <Menu.Item onClick={() => setEscope(-1)} className={styles.menuitem} key="-1">
             <img src="/polygon.svg" className={styles.menuIcon}/>geral
         </Menu.Item>
-        {units && units.map( unit => (
-                  <Menu.Item onClick={() => setEscope( n => n + 1 )} className={styles.menuitem} >
+        {units && units.map( (unit,key) => (
+                  <Menu.Item onClick={() => setEscope( key)} className={styles.menuitem} >
             <img src="/polygon.svg" className={styles.menuIcon}/>{unit.name}
         </Menu.Item>
         ))}

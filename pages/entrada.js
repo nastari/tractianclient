@@ -4,20 +4,21 @@ import { useRouter } from 'next/router'
 import styles from '../styles/Entrada.module.css';
 
 function Entrada() {
+  const [ loading, setLoading ] = useState(false)
   const [ auth ,setAuth ]  = useState("5fb055259a438f3a74040baa")
   const router = useRouter();
 
 
   async function authorization(){
-
+    setLoading(true)
     const response = await fetch('http://localhost:30233/company?' + new URLSearchParams({
       company_id: auth }), {
         method: 'GET', headers: {
       'Accept': 'application/json',
       'Content-Type': 'application/json'
     },
-  })
-
+    })
+    setLoading(false)
     if(!response.ok){
 
       alert('Companhia não encontrada')
@@ -25,9 +26,6 @@ function Entrada() {
     } else {
 
       const data = await response.json()
-
-      console.log(data);
-      console.log('entrada data receive');
 
       localStorage.setItem('company', JSON.stringify(data))
 
@@ -45,7 +43,7 @@ function Entrada() {
       <img src="/tractianblack.jpg" className={styles.logo} alt=""/>
     <Input className={styles.input} value={auth} onChange={(e) => setAuth(e.target.value)} placeholder="Email do Colaborador"></Input>
     <Input type="password" className={styles.input} value={auth} placeholder="Senha"></Input>
-    <Button onClick={() => authorization()} className={styles.button}>ENTRAR</Button>
+    <Button loading={loading} onClick={() => authorization()} className={styles.button}>{ loading ? null  :'ENTRAR'}</Button>
     </div>
   </div>;
 }
