@@ -43,10 +43,19 @@ function Main() {
   useEffect(() => (fadeInRef.current.style.opacity = 1), []);
 
   async function fetchData() {
-    // geral escope
-    if (escope === -1) {
+    // geral escope( company )
+    if (escope === -1 && company) {
       if (option === '0') {
-        // grafico para find.all com id companhia
+        setLoading(true);
+
+        const res = await fetch(
+          `http://localhost:30233/asset?company_id=${company._id}`
+        );
+        const assetss = await res.json();
+
+        setAssets(assetss);
+
+        setLoading(false);
       }
       if (option === '1') {
         setLoading(true);
@@ -75,7 +84,13 @@ function Main() {
     // units escope
     if (escope !== -1) {
       if (option === '0') {
-        // grafico para find.all com id companhia e id unidade
+        setLoading(true);
+        const res = await fetch(
+          `http://localhost:30233/asset?unit_id=${units[escope].id}`
+        );
+        const assetss = await res.json();
+        setAssets(assetss);
+        setLoading(false);
       }
       if (option === '1') {
         setLoading(true);
@@ -154,16 +169,16 @@ function Main() {
         )}
 
         <div className={styles.infosContainer}>
-          {option === '0' && (
+          {option === '0' && assets ? (
             <>
               <div className={styles.left}>
-                <MainInfo />
+                <MainInfo data={assets} />
               </div>
               <div className={styles.right}>
                 <MainSidebar />
               </div>
             </>
-          )}
+          ) : null}
 
           {option === '1' && (
             <>
