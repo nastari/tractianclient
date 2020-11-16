@@ -15,18 +15,18 @@ function ChartHealthscore({ data }) {
       return {
         type: 'column',
         name: asset.name,
-        data: [asset.healthscore],
+        data: [{ y: asset.healthscore, url: asset._id }],
         zones: [
           {
             value: 59,
-            color: '#ff00002c',
+            color: '#ff000070',
           },
           {
             value: 79,
-            color: '#ffa6002c',
+            color: '#ffa60070',
           },
           {
-            color: ' #1eff3151',
+            color: ' #1eff3170',
           },
         ],
       };
@@ -40,10 +40,12 @@ function ChartHealthscore({ data }) {
 
   const options = {
     tooltip: {
-      backgroundColor: '#fff',
-      borderColor: 'blue',
-      borderRadius: 8,
-      borderWidth: 1,
+      borderRadius: 20,
+      borderWidth: 3,
+      valueSuffix: ' hs',
+    },
+    marker: {
+      enabled: false,
     },
     yAxis: {
       title: {
@@ -52,13 +54,43 @@ function ChartHealthscore({ data }) {
       tickInterval: 5,
     },
     title: {
-      text: 'Saúde dos ativos',
+      text: 'HealthScore',
     },
     subtitle: {
       text: 'Healthscore (hs) neste momento',
     },
     series: assets,
-    hoverData: null,
+    legend: {
+      showCheckbox: false,
+      title: {
+        text: '<h4>Ativos</h4>',
+        style: {
+          fontStyle: 'italic',
+        },
+      },
+      symbolPadding: 0,
+      symbolWidth: 0,
+      symbolHeight: 0,
+      squareSymbol: false,
+      enabled: true,
+    },
+    plotOptions: {
+      series: {
+        states: {
+          inactive: {
+            opacity: 1,
+          },
+        },
+        cursor: 'pointer',
+        point: {
+          events: {
+            click() {
+              location.href = `http://localhost:3000/ativo/${this.url}`;
+            },
+          },
+        },
+      },
+    },
   };
 
   return (
