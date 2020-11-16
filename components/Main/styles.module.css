@@ -59,6 +59,12 @@
     margin: 10px;
   }
 
+  .title{
+    font-size: 22px;
+  }
+
+
+
   .infosContainer {
     display: flex;
     flex-direction: column;

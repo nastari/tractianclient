@@ -61,5 +61,12 @@
   text-transform: lowercase;
 }
 
+.menuIcon , .menuIcon_ {
+  margin-right: 10px;
+  margin-left: 0px;
+}
+
+
+
 
 }

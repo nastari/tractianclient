@@ -1,34 +1,30 @@
-import { useEffect } from 'react'
-import Header from '../components/Header'
-import styles from '../styles/Index.module.css'
-import Sidebar from '../components/Sidebar'
-import Main from '../components/Main'
-import ModalConcern from '../components/ModalConcerny'
-import { useCompany } from '../context/Escope'
-
-
+import { useEffect } from 'react';
+import Header from '../components/Header';
+import styles from '../styles/Index.module.css';
+import Sidebar from '../components/Sidebar';
+import Main from '../components/Main';
+import ModalConcern from '../components/ModalConcerny';
+import { useCompany } from '../context/Escope';
 
 export default function Home() {
-  
-  const { setCompany } = useCompany()
+  const { setCompany } = useCompany();
 
   useEffect(() => {
-      setCompany(JSON.parse(localStorage.getItem('company')))
-  },[])
+    setCompany(JSON.parse(localStorage.getItem('company')));
+  }, []);
 
   return (
     <>
-     <Header/>
+      <Header />
       <div className={styles.content}>
         <div className={styles.left}>
-            <Sidebar/>
+          <Sidebar />
         </div>
         <div className={styles.right}>
-            <Main/>
+          <Main />
         </div>
       </div>
-      <ModalConcern/>
-  </>
-  )
+      <ModalConcern />
+    </>
+  );
 }
-
