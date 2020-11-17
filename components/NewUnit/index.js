@@ -10,7 +10,9 @@ function NewUnit({ setModal }) {
   const [nameUnit, setNameUnit] = useState('');
 
   async function createUnit() {
-    // validation example ...
+    // some validation
+
+    //
 
     const response = await fetch(`${process.env.NEXT_PUBLIC_URL_SERVER}/unit`, {
       method: 'POST',

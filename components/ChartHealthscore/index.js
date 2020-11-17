@@ -76,7 +76,7 @@ function ChartHealthscore({ data }) {
     },
     plotOptions: {
       series: {
-        pointWidth: 25,
+        pointWidth: 16,
         states: {
           inactive: {
             opacity: 1,

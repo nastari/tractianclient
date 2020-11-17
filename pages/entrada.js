@@ -22,7 +22,7 @@ function Entrada() {
         },
       }
     );
-    console.log(response);
+
     setLoading(false);
     if (!response.ok) {
       alert('Companhia não encontrada.');

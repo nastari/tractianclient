@@ -7,11 +7,8 @@ export default function CountProvider({ children }) {
   const [modal, setModal] = useState(false);
   const [company, setCompany] = useState(null);
   const [visibleMobileSidebar, setVisibleMobileSidebar] = useState(false);
-  const [units, setUnits] = useState(false);
+  const [units, setUnits] = useState(null);
 
-  useEffect(() => {
-    console.log(units.length);
-  }, [units]);
   return (
     <CounterContext.Provider
       value={{

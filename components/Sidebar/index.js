@@ -16,7 +16,7 @@ function Sidebar() {
   const { company } = useCompany();
   const { units, setUnits } = useUnits();
 
-  useEffect(async () => {
+  useEffect(() => {
     if (company) {
       getUnits(company._id);
     }
@@ -26,9 +26,9 @@ function Sidebar() {
     const res = await fetch(
       `${process.env.NEXT_PUBLIC_URL_SERVER}/units?company_id=${id}`
     );
-    const units_ = await res.json();
+    const unitss = await res.json();
 
-    setUnits(units_);
+    setUnits(unitss);
   }
 
   return (
