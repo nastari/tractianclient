@@ -25,7 +25,7 @@ function Entrada() {
 
     setLoading(false);
     if (!response.ok) {
-      alert('Companhia não encontrada');
+      alert('Companhia não encontrada.');
     } else {
       const data = await response.json();
 
