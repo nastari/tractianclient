@@ -66,3 +66,9 @@ function Entrada() {
 }
 
 export default Entrada;
+
+export async function getServerSideProps(context) {
+  return {
+    props: {},
+  };
+}
