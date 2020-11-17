@@ -1,9 +1,8 @@
 import { useState, useEffect } from 'react';
-import { Input, Button } from 'antd';
+import { Input, Button, message } from 'antd';
 import { CloseOutlined } from '@ant-design/icons';
 import styles from './styles.module.css';
 import { useCompany } from '../../context/Escope';
-import api from '../../services/api';
 
 function NewUnit({ setModal }) {
   const { company } = useCompany();
@@ -25,6 +24,12 @@ function NewUnit({ setModal }) {
           }),
         }
       );
+      setModal(false);
+      if (response.ok) {
+        message.success('Unidade criada com sucesso.');
+      } else {
+        message.warning('Unidade não criada. Tente daqui a pouco.');
+      }
     }
   }
 

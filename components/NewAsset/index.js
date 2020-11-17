@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Input, Button, Select, Form, Upload /* message */ } from 'antd';
+import { Input, Button, Select, Form, Upload, message } from 'antd';
 import { LoadingOutlined, PlusOutlined } from '@ant-design/icons';
 import { getBase64, beforeUpload } from '../../support/files';
 import styles from './styles.module.css';
@@ -11,7 +11,6 @@ const { Item } = Form;
 function NewAsset({ unit, company }) {
   const [loading, setLoading] = useState(false);
   const [loadingSubmit, setLoadingSubmit] = useState(false);
-  const [message, setMessage] = useState(false);
   const [imageUrl, setImageUrl] = useState();
 
   const [collabs, setCollabs] = useState();
@@ -37,7 +36,7 @@ function NewAsset({ unit, company }) {
         body: JSON.stringify({
           name: values.name,
           status: values.status,
-          userOwner: values.owner,
+          owner_id: values.owner,
           description: values.description,
           unit_id: unit.id,
           company_id: company._id,
@@ -47,9 +46,9 @@ function NewAsset({ unit, company }) {
     );
     setLoadingSubmit(false);
     if (response.ok) {
-      setMessage('CRIADO COM SUCESSO');
+      message.success('Unidade criada com sucesso.');
     } else {
-      setMessage('FALHA AO CADASTRAR');
+      message.warning('Unidade não criada. Tente daqui a pouco.');
     }
   };
 
@@ -145,8 +144,6 @@ function NewAsset({ unit, company }) {
               {loadingSubmit ? '' : 'CADASTRAR'}
             </Button>
           </Item>
-
-          <small>{message && String(message)}</small>
         </Form>
       </div>
     </div>

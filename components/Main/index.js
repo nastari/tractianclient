@@ -27,7 +27,7 @@ function Main() {
 
   const { escope } = useEscope();
   const { setVisibleMobileSidebar } = useMobile();
-  const [option, setOption] = useState('0');
+  const [option, setOption] = useState('GRAPHIC');
   const [triggerOption, setTriggerOption] = useState(0);
   const { company } = useCompany();
   const [assets, setAssets] = useState();
@@ -36,7 +36,7 @@ function Main() {
   const handleChangeOption = (e) => setOption(e.key);
 
   useEffect(() => {
-    setOption('0');
+    setOption('GRAPHIC');
     setTriggerOption((c) => c + 1);
   }, [escope]);
 
@@ -45,7 +45,7 @@ function Main() {
   async function fetchData() {
     // geral escope( company )
     if (escope === -1 && company) {
-      if (option === '0') {
+      if (option === 'GRAPHIC') {
         setLoading(true);
 
         const res = await fetch(
@@ -57,7 +57,7 @@ function Main() {
 
         setLoading(false);
       }
-      if (option === '1') {
+      if (option === 'LIST_ASSET') {
         setLoading(true);
         const res = await fetch(
           `${process.env.NEXT_PUBLIC_URL_SERVER}/asset?company_id=${company._id}`
@@ -68,22 +68,17 @@ function Main() {
 
         setLoading(false);
       }
-      if (option === '2') {
-        // setLoading(true);
-        // const res = await fetch(
-        //   `${process.env.NEXT_PUBLIC_URL_SERVER}/asset?company_id=${company._id}`
-        // );
-        // const assets_ = await res.json();
-        // setLoading(false);
+      if (option === 'CREATE_USER') {
+        // store user - id companhia
       }
-      if (option === '3') {
+      if (option === 'LIST_USER') {
         // find.all dos colaboradores id da companhia
       }
     }
 
     // units escope
     if (escope !== -1) {
-      if (option === '0') {
+      if (option === 'GRAPHIC') {
         setLoading(true);
         const res = await fetch(
           `${process.env.NEXT_PUBLIC_URL_SERVER}/asset?unit_id=${units[escope].id}`
@@ -92,7 +87,7 @@ function Main() {
         setAssets(assetss);
         setLoading(false);
       }
-      if (option === '1') {
+      if (option === 'LIST_ASSET') {
         setLoading(true);
         const res = await fetch(
           `${process.env.NEXT_PUBLIC_URL_SERVER}/asset?unit_id=${units[escope].id}`
@@ -101,10 +96,10 @@ function Main() {
         setAssets(assetss);
         setLoading(false);
       }
-      if (option === '2') {
+      if (option === 'CREATE_ASSET') {
         // criar ativo para id companhia e id unidade
       }
-      if (option === '3') {
+      if (option === 'NOTIFICATIONS') {
         console.log(units[escope]);
       }
     }
@@ -134,16 +129,16 @@ function Main() {
             selectedKeys={[option]}
             mode="horizontal"
           >
-            <Menu.Item key="0" icon={<FundOutlined />}>
+            <Menu.Item key="GRAPHIC" icon={<FundOutlined />}>
               Painel
             </Menu.Item>
-            <Menu.Item key="1" icon={<CarryOutOutlined />}>
+            <Menu.Item key="LIST_ASSET" icon={<CarryOutOutlined />}>
               Ativos
             </Menu.Item>
-            <Menu.Item key="2" icon={<PlusCircleOutlined />}>
+            <Menu.Item key="CREATE_USER" icon={<PlusCircleOutlined />}>
               Criar usuário
             </Menu.Item>
-            <Menu.Item key="3" icon={<UserOutlined />}>
+            <Menu.Item key="LIST_USER" icon={<UserOutlined />}>
               Colaboradores
             </Menu.Item>
           </Menu>
@@ -153,23 +148,23 @@ function Main() {
             selectedKeys={[option]}
             mode="horizontal"
           >
-            <Menu.Item key="0" icon={<FundOutlined />}>
+            <Menu.Item key="GRAPHIC" icon={<FundOutlined />}>
               Painel
             </Menu.Item>
-            <Menu.Item key="1" icon={<CarryOutOutlined />}>
+            <Menu.Item key="LIST_ASSET" icon={<CarryOutOutlined />}>
               Ativos
             </Menu.Item>
-            <Menu.Item key="2" icon={<PlusCircleOutlined />}>
+            <Menu.Item key="CREATE_ASSET" icon={<PlusCircleOutlined />}>
               Criar ativo
             </Menu.Item>
-            <Menu.Item disabled key="3" icon={<ScheduleOutlined />}>
+            <Menu.Item disabled key="NOTIFICATIONS" icon={<ScheduleOutlined />}>
               Notificações
             </Menu.Item>
           </Menu>
         )}
 
         <div className={styles.infosContainer}>
-          {option === '0' && assets ? (
+          {option === 'GRAPHIC' && assets ? (
             <>
               <div className={styles.left}>
                 <MainInfo data={assets} />
@@ -180,7 +175,7 @@ function Main() {
             </>
           ) : null}
 
-          {option === '1' && (
+          {option === 'LIST_ASSET' && (
             <>
               <div className={styles.left}>
                 <Assets loading={loading} data={assets} />
@@ -190,11 +185,11 @@ function Main() {
               </div>
             </>
           )}
-          {option === '2' && escope !== -1 && (
+          {option === 'CREATE_ASSET' && escope !== -1 && (
             <NewAsset unit={units[escope]} company={company} />
           )}
-          {option === '2' && escope === -1 && <NewUser />}
-          {option === '3' && escope === -1 && <Collaborators />}
+          {option === 'CREATE_USER' && escope === -1 && <NewUser />}
+          {option === 'LIST_USER' && escope === -1 && <Collaborators />}
         </div>
       </div>
     </div>

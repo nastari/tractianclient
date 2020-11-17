@@ -84,11 +84,11 @@ function ChartHealthscore({ data }) {
         },
         cursor: 'pointer',
         point: {
-          events: {
-            click() {
-              location.href = `https://tractian2.vercel.app/ativo/${this.url}`;
-            },
-          },
+          // events: {
+          //   click() {
+          //     location.href = `https://tractian2.vercel.app/ativo/${this.url}`;
+          //   },
+          // },
         },
       },
     },

@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Input, Button, Form, Upload, message } from 'antd';
 import { LoadingOutlined, PlusOutlined } from '@ant-design/icons';
 import styles from './styles.module.css';
+import { useCompany } from '../../context/Escope';
 
 const { Item } = Form;
 
@@ -29,8 +30,10 @@ function beforeUpload(file) {
 
 function NewUser() {
   const [loading, setLoading] = useState(false);
-  const [message, setMessage] = useState(false);
+  const [loadingSubmit, setLoadingSubmit] = useState(false);
   const [imageUrl, setImageUrl] = useState();
+
+  const { company } = useCompany();
 
   const handleChange = (info) => {
     if (info.file.status === 'uploading') {
@@ -38,10 +41,8 @@ function NewUser() {
       return;
     }
     if (info.file.status === 'done') {
-      // Get this url from response in real world.
       getBase64(info.file.originFileObj, (url) => {
         setImageUrl(url);
-        // console.log(image_url);  aqui ta vindo url base 64
         setLoading(false);
       });
     }
@@ -55,23 +56,27 @@ function NewUser() {
   );
 
   const onFinish = async (values) => {
-    setLoading(true);
-    const response = await fetch(`${process.env.NEXT_PUBLIC_URL_SERVER}/user`, {
-      method: 'POST',
-      headers: {
-        Accept: 'application/json',
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        name: values.name,
-        jobDescription: values.job,
-      }),
-    });
-    setLoading(false);
+    setLoadingSubmit(true);
+    const response = await fetch(
+      `${process.env.NEXT_PUBLIC_URL_SERVER}/user?company_id=${company._id}`,
+      {
+        method: 'POST',
+        headers: {
+          Accept: 'application/json',
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          name: values.name,
+          job: values.job,
+        }),
+      }
+    );
+
+    setLoadingSubmit(false);
     if (response.ok) {
-      setMessage('CRIADO COM SUCESSO');
+      message.success('Unidade criada com sucesso.');
     } else {
-      setMessage('FALHA AO CADASTRAR');
+      message.warning('Unidade não criada. Tente daqui a pouco.');
     }
   };
 
@@ -108,10 +113,14 @@ function NewUser() {
             />
           </Item>
           <Item className={styles.itemMobileButton}>
-            <Button type="primary" className={styles.button}>
-              CADASTRAR
+            <Button
+              type="primary"
+              htmlType="submit"
+              loading={loadingSubmit}
+              className={styles.button}
+            >
+              {loadingSubmit ? '' : 'CADASTRAR'}
             </Button>
-            {message ? String(message) : null}
           </Item>
         </Form>
       </div>
