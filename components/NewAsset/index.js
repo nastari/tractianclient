@@ -18,7 +18,7 @@ function NewAsset({ unit, company }) {
 
   async function getCollaborators() {
     const res = await fetch(
-      `http://localhost:30233/user?company_id=${company._id}`
+      `${process.env.NEXT_PUBLIC_URL_SERVER}/user?company_id=${company._id}`
     );
     const collabss = await res.json();
     setCollabs(collabss);
