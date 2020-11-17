@@ -5,13 +5,13 @@ import styles from '../styles/Entrada.module.css';
 
 function Entrada() {
   const [loading, setLoading] = useState(false);
-  const [auth, setAuth] = useState('5fb055259a438f3a74040baa');
+  const [auth, setAuth] = useState('5fb32dea4d4e580021df709c');
   const router = useRouter();
 
   async function authorization() {
     setLoading(true);
     const response = await fetch(
-      `http://localhost:30233/company?${new URLSearchParams({
+      `${process.env.NEXT_PUBLIC_URL_SERVER}/company?${new URLSearchParams({
         company_id: auth,
       })}`,
       {
@@ -22,6 +22,7 @@ function Entrada() {
         },
       }
     );
+
     setLoading(false);
     if (!response.ok) {
       alert('Companhia não encontrada');

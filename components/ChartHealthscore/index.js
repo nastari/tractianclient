@@ -86,7 +86,7 @@ function ChartHealthscore({ data }) {
         point: {
           events: {
             click() {
-              location.href = `http://localhost:3000/ativo/${this.url}`;
+              location.href = `https://tractian2.vercel.app/ativo/${this.url}`;
             },
           },
         },

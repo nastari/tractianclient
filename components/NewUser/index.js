@@ -56,7 +56,7 @@ function NewUser() {
 
   const onFinish = async (values) => {
     setLoading(true);
-    const response = await fetch('http://localhost:30233/user', {
+    const response = await fetch(`${process.env.NEXT_PUBLIC_URL_SERVER}/user`, {
       method: 'POST',
       headers: {
         Accept: 'application/json',

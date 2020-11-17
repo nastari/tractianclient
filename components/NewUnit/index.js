@@ -11,17 +11,20 @@ function NewUnit({ setModal }) {
 
   async function createUnit() {
     if (nameUnit.length > 4 && nameUnit.length < 20) {
-      const response = await fetch('http://localhost:30233/unit', {
-        method: 'POST',
-        headers: {
-          Accept: 'application/json',
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          name: nameUnit,
-          company: company._id,
-        }),
-      });
+      const response = await fetch(
+        `${process.env.NEXT_PUBLIC_URL_SERVER}/unit`,
+        {
+          method: 'POST',
+          headers: {
+            Accept: 'application/json',
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            name: nameUnit,
+            company: company._id,
+          }),
+        }
+      );
     }
   }
 

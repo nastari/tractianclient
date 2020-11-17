@@ -23,7 +23,9 @@ function Sidebar() {
   }, [company]);
 
   async function getUnits(id) {
-    const res = await fetch(`http://localhost:30233/units?company_id=${id}`);
+    const res = await fetch(
+      `${process.env.NEXT_PUBLIC_URL_SERVER}/units?company_id=${id}`
+    );
     const units_ = await res.json();
 
     // const units_ = [

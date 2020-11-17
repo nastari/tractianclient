@@ -49,7 +49,7 @@ function Main() {
         setLoading(true);
 
         const res = await fetch(
-          `http://localhost:30233/asset?company_id=${company._id}`
+          `${process.env.NEXT_PUBLIC_URL_SERVER}/asset?company_id=${company._id}`
         );
         const assetss = await res.json();
 
@@ -60,7 +60,7 @@ function Main() {
       if (option === '1') {
         setLoading(true);
         const res = await fetch(
-          `http://localhost:30233/asset?company_id=${company._id}`
+          `${process.env.NEXT_PUBLIC_URL_SERVER}/asset?company_id=${company._id}`
         );
         const assetss = await res.json();
 
@@ -71,7 +71,7 @@ function Main() {
       if (option === '2') {
         // setLoading(true);
         // const res = await fetch(
-        //   `http://localhost:30233/asset?company_id=${company._id}`
+        //   `${process.env.NEXT_PUBLIC_URL_SERVER}/asset?company_id=${company._id}`
         // );
         // const assets_ = await res.json();
         // setLoading(false);
@@ -86,7 +86,7 @@ function Main() {
       if (option === '0') {
         setLoading(true);
         const res = await fetch(
-          `http://localhost:30233/asset?unit_id=${units[escope].id}`
+          `${process.env.NEXT_PUBLIC_URL_SERVER}/asset?unit_id=${units[escope].id}`
         );
         const assetss = await res.json();
         setAssets(assetss);
@@ -95,7 +95,7 @@ function Main() {
       if (option === '1') {
         setLoading(true);
         const res = await fetch(
-          `http://localhost:30233/asset?unit_id=${units[escope].id}`
+          `${process.env.NEXT_PUBLIC_URL_SERVER}/asset?unit_id=${units[escope].id}`
         );
         const assetss = await res.json();
         setAssets(assetss);

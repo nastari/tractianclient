@@ -26,22 +26,25 @@ function NewAsset({ unit, company }) {
 
   const onFinish = async (values) => {
     setLoadingSubmit(true);
-    const response = await fetch('http://localhost:30233/asset', {
-      method: 'POST',
-      headers: {
-        Accept: 'application/json',
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        name: values.name,
-        status: values.status,
-        userOwner: values.owner,
-        description: values.description,
-        unit_id: unit.id,
-        company_id: company._id,
-        avatar_url: '...',
-      }),
-    });
+    const response = await fetch(
+      `${process.env.NEXT_PUBLIC_URL_SERVER}/asset`,
+      {
+        method: 'POST',
+        headers: {
+          Accept: 'application/json',
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          name: values.name,
+          status: values.status,
+          userOwner: values.owner,
+          description: values.description,
+          unit_id: unit.id,
+          company_id: company._id,
+          avatar_url: '...',
+        }),
+      }
+    );
     setLoadingSubmit(false);
     if (response.ok) {
       setMessage('CRIADO COM SUCESSO');
