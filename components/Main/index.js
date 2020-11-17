@@ -33,6 +33,9 @@ function Main() {
   const [assets, setAssets] = useState();
   const { units } = useUnits();
   const [loading, setLoading] = useState(false);
+
+  useEffect(() => (fadeInRef.current.style.opacity = 1), []);
+
   const handleChangeOption = (e) => setOption(e.key);
 
   useEffect(() => {
@@ -40,10 +43,9 @@ function Main() {
     setTriggerOption((c) => c + 1);
   }, [escope]);
 
-  useEffect(() => (fadeInRef.current.style.opacity = 1), []);
-
   async function fetchData() {
     // geral escope( company )
+
     if (escope === -1 && company) {
       if (option === 'GRAPHIC') {
         setLoading(true);
@@ -69,10 +71,10 @@ function Main() {
         setLoading(false);
       }
       if (option === 'CREATE_USER') {
-        // store user - id companhia
+        //
       }
       if (option === 'LIST_USER') {
-        // find.all dos colaboradores id da companhia
+        //
       }
     }
 
@@ -84,6 +86,7 @@ function Main() {
           `${process.env.NEXT_PUBLIC_URL_SERVER}/asset?unit_id=${units[escope].id}`
         );
         const assetss = await res.json();
+
         setAssets(assetss);
         setLoading(false);
       }
@@ -97,10 +100,10 @@ function Main() {
         setLoading(false);
       }
       if (option === 'CREATE_ASSET') {
-        // criar ativo para id companhia e id unidade
+        //
       }
       if (option === 'NOTIFICATIONS') {
-        console.log(units[escope]);
+        //
       }
     }
   }

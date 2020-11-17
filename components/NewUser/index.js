@@ -74,9 +74,9 @@ function NewUser() {
 
     setLoadingSubmit(false);
     if (response.ok) {
-      message.success('Unidade criada com sucesso.');
+      message.success('Colaborador criado com sucesso.');
     } else {
-      message.warning('Unidade não criada. Tente daqui a pouco.');
+      message.warning('Erro ao criar colaborador.');
     }
   };
 

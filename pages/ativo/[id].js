@@ -15,6 +15,7 @@ import {
   StarOutlined,
   SettingOutlined,
 } from '@ant-design/icons';
+import ModalConcern from '../../components/ModalConcerny';
 
 import Header from '../../components/Header';
 import styles from '../../styles/Ativo.module.css';
@@ -150,6 +151,7 @@ export default function Home({ asset }) {
           </div>
         </div>
       </div>
+      <ModalConcern />
     </>
   );
 }

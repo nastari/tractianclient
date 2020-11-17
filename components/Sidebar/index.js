@@ -28,11 +28,6 @@ function Sidebar() {
     );
     const units_ = await res.json();
 
-    // const units_ = [
-    //   { name: 'unidade baixada' , id: '1242dsa213'},
-    //   { name: 'unidade flamengo' , id:  '1213'}
-    // ]
-
     setUnits(units_);
   }
 

@@ -36,7 +36,7 @@ function ChartHealthscore({ data }) {
 
   useEffect(() => {
     composeGraphic();
-  }, []);
+  }, [data]);
 
   const options = {
     tooltip: {

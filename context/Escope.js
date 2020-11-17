@@ -1,4 +1,4 @@
-import { createContext, useState, useContext } from 'react';
+import { createContext, useState, useContext, useEffect } from 'react';
 
 const CounterContext = createContext(null);
 
@@ -8,6 +8,10 @@ export default function CountProvider({ children }) {
   const [company, setCompany] = useState(null);
   const [visibleMobileSidebar, setVisibleMobileSidebar] = useState(false);
   const [units, setUnits] = useState(false);
+
+  useEffect(() => {
+    console.log(units.length);
+  }, [units]);
   return (
     <CounterContext.Provider
       value={{

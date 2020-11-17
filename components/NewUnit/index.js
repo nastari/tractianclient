@@ -2,13 +2,15 @@ import { useState, useEffect } from 'react';
 import { Input, Button, message } from 'antd';
 import { CloseOutlined } from '@ant-design/icons';
 import styles from './styles.module.css';
-import { useCompany } from '../../context/Escope';
+import { useCompany, useUnits } from '../../context/Escope';
 
 function NewUnit({ setModal }) {
   const { company } = useCompany();
+  const { setUnits } = useUnits();
   const [nameUnit, setNameUnit] = useState('');
 
   async function createUnit() {
+    // validation example ...
     if (nameUnit.length > 4 && nameUnit.length < 20) {
       const response = await fetch(
         `${process.env.NEXT_PUBLIC_URL_SERVER}/unit`,
@@ -24,6 +26,8 @@ function NewUnit({ setModal }) {
           }),
         }
       );
+      const data = await response.json();
+      setUnits((units) => [...units, { id: data._id, name: data.name }]);
       setModal(false);
       if (response.ok) {
         message.success('Unidade criada com sucesso.');
