@@ -11,29 +11,25 @@ function NewUnit({ setModal }) {
 
   async function createUnit() {
     // validation example ...
-    if (nameUnit.length > 4 && nameUnit.length < 20) {
-      const response = await fetch(
-        `${process.env.NEXT_PUBLIC_URL_SERVER}/unit`,
-        {
-          method: 'POST',
-          headers: {
-            Accept: 'application/json',
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({
-            name: nameUnit,
-            company: company._id,
-          }),
-        }
-      );
-      const data = await response.json();
-      setUnits((units) => [...units, { id: data._id, name: data.name }]);
-      setModal(false);
-      if (response.ok) {
-        message.success('Unidade criada com sucesso.');
-      } else {
-        message.warning('Unidade não criada. Tente daqui a pouco.');
-      }
+
+    const response = await fetch(`${process.env.NEXT_PUBLIC_URL_SERVER}/unit`, {
+      method: 'POST',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        name: nameUnit,
+        company: company._id,
+      }),
+    });
+    const data = await response.json();
+    setUnits((units) => [...units, { id: data._id, name: data.name }]);
+    setModal(false);
+    if (response.ok) {
+      message.success('Unidade criada com sucesso.');
+    } else {
+      message.warning('Unidade não criada. Tente daqui a pouco.');
     }
   }
 
